@@ -14,6 +14,6 @@ class Bill extends Model
     }
 
     public function customer() {
-    	return $this->belongTo('App\Customer');
+    	return $this->belongTo('App\Customer'); // this is my comment
     }
 }
