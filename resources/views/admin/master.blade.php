@@ -34,7 +34,6 @@
     <script type="text/javascript">var baseURL = "{!! url('/') !!}";</script>
 
     <script src="{{ url('public/admin/js/func_ckfinder.js') }}"></script>
-    
 </head>
 
 <body>
@@ -50,7 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Admin Area - Shoesvn</a>
+                <a class="navbar-brand" href="#">Quản lý bán hàng</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -67,12 +66,12 @@
                             @endif
                             </a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="http://localhost/framework/laravel/Laravel_Project/logout"
                                             onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                             <form id="logout-form" action="http://localhost/framework/laravel/Laravel_Project/logout" method="POST" style="display: none;">
                                             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                                         </form>
@@ -89,7 +88,7 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm...">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">
                                         <i class="fa fa-search"></i>
@@ -99,40 +98,73 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Bảng điều khiển</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quản Lý Loại Hàng Hóa<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Category</a>
+                                    <a href="{!! URL::route('admin.cate.list') !!}">Danh Sách Loại</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Category</a>
+                                    <a href="{!! URL::route('admin.cate.getAdd') !!}">Thêm Loại</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Quản Lý Hàng Hóa<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Product</a>
+                                    <a href="{!! URL::route('admin.product.list') !!}">Danh Sách Hàng Hóa</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Product</a>
+                                    <a href="{!! URL::route('admin.product.getAdd') !!}">Thêm Hàng Hóa</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Quản Lý Người Dùng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List User</a>
+                                    <a href="{!! URL::route('admin.user.list') !!}">Danh Sách Người Dùng</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add User</a>
+                                    <a href="{!! URL::route('admin.user.getAdd') !!}">Thêm Người Dùng</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Quản Lý Khách Hàng<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Danh Sách Khách Hàng</a>
+                                </li>
+                                <li>
+                                    <a href="#">Thêm Khách Hàng</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Quản Lý Nhà Sản Xuất<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Danh Sách NSX</a>
+                                </li>
+                                <li>
+                                    <a href="#">Thêm NSX</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Quản Lý Đặt Hàng<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Đơn Đặt Hàng</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

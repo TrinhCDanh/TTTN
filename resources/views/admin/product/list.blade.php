@@ -7,12 +7,13 @@
     <thead>
         <tr align="center">
             <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Date</th>
-            <th>Category</th>
-            <th>Delete</th>
-            <th>Edit</th>
+            <th>Tên sản phẩm</th>
+            <th>Gía</th>
+            <th>Đơn vị tính</th>
+            <th>Ngày</th>
+            <th>Loại sản phẩm</th>
+            <th>Xóa</th>
+            <th>Sửa</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,7 @@
             <td>{!! $i !!}</td>
             <td>{!! $item['name'] !!}</td>
             <td>{!! number_format($item['price'],0,",",".") !!} VND</td>
+            <th>{{ $item['unit'] }}</th>
             <td>
                 {!! \Carbon\Carbon::createFromTimeStamp(strtotime($item["created_at"]))->diffForHumans() !!} 
             </td>

@@ -20,7 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => 'web'], function() {
 	Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function() {
 		Route::group(['prefix'=>'cate'], function() {

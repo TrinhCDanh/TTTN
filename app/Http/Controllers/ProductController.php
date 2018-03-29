@@ -16,7 +16,7 @@ use Auth;
 class ProductController extends Controller
 {
 	public function getList() {
-		$data = Product::select('id', 'name', 'price', 'cate_id', 'created_at')->orderBy('id', 'DESC')->get()->toArray();
+		$data = Product::select('id', 'name', 'price','unit', 'cate_id', 'created_at')->orderBy('id', 'DESC')->get()->toArray();
 		return view('admin.product.list', compact('data'));
 	}
 
@@ -32,6 +32,7 @@ class ProductController extends Controller
     	$product->name = $request->txtName;
     	$product->alias = changeTitle($request->txtName);
     	$product->price = $request->txtPrice;
+        $product->unit = $request->txtUnit;
     	$product->intro = $request->txtIntro;
     	$product->content = $request->txtContent;
     	$product->image = $file_name;
@@ -83,6 +84,7 @@ class ProductController extends Controller
     	$product->name 			= Request::input('txtName');
     	$product->alias 		= changeTitle(Request::input('txtName'));
     	$product->price 		= Request::input('txtPrice');
+        $product->unit          = Request::input('txtUnit');
     	$product->intro 		= Request::input('txtIntro');
     	$product->content 		= Request::input('txtContent');
     	$product->keywords 		= Request::input('txtKeywords');

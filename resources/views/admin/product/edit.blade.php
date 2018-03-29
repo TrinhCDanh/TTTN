@@ -22,7 +22,11 @@
         </div>
         <div class="form-group">
             <label>Price</label>
-            <input class="form-control" name="txtPrice" placeholder="Please Enter Password" value="{!! old('txtPrice', isset($product) ? $product['price'] : null) !!}" />
+            <input class="form-control" name="txtPrice" placeholder="Please Enter Price" value="{!! old('txtPrice', isset($product) ? $product['price'] : null) !!}" />
+        </div>
+        <div class="form-group">
+            <label>Unit</label>
+            <input class="form-control" name="txtUnit" placeholder="Please Enter Unit" value="{!! old('txtUnit', isset($product) ? $product['unit'] : null) !!}" />
         </div>
         <div class="form-group">
             <label>Intro</label>
