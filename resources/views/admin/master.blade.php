@@ -125,13 +125,13 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Quản Lý Người Dùng<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Quản Lý Nhân Viên<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::route('admin.user.list') !!}">Danh Sách Người Dùng</a>
+                                    <a href="{!! URL::route('admin.user.list') !!}">Danh Sách Nhân Viên</a>
                                 </li>
                                 <li>
-                                    <a href="{!! URL::route('admin.user.getAdd') !!}">Thêm Người Dùng</a>
+                                    <a href="{!! URL::route('admin.user.getAdd') !!}">Thêm Nhân Viên</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
