@@ -19,13 +19,14 @@ class CreateProductsTable extends Migration
             $table->string('alias');
             $table->integer('price');
             $table->text('intro');
-            $table->longText('content');
+                $table->longText('content');
             $table->string('image');
             $table->string('keywords');
             $table->string('description');
             // create foreign key
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->integer('cate_id')->unsigned();
             $table->foreign('cate_id')->references('id')->on('cates')->onDelete('cascade');
             $table->timestamps();
