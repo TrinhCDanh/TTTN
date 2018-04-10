@@ -3,7 +3,7 @@
 @section('content')
   <section id="product">
     <div class="container">
-    <!--  breadcrumb -->  
+    <!--  breadcrumb -->
       <ul class="breadcrumb">
         <li>
           <a href="#">Home</a>
@@ -11,7 +11,7 @@
         </li>
         <li class="active">Checkout</li>
       </ul>
-      <div class="row">        
+      <div class="row">
         <!-- Account Login-->
         <div class="col-lg-9">
           <h1 class="heading1"><span class="maintext">Checkout</span><span class="subtext"> Checkout Process Steps</span></h1>
@@ -31,7 +31,7 @@
                   <th class="image">Image</th>
                   <th class="name">Product Name</th>
                   <th class="quantity">Quantity</th>
-                  <th class="action">Action</th>
+                  {{-- <th class="action">Action</th> --}}
                   <th class="price">Unit Price</th>
                   <th class="total">Total</th>
                 </tr>
@@ -41,29 +41,29 @@
                     <tr>
                       <td class="image"><a href="#"><img title="product" alt="product" src="{!! asset('resources/uploads/'.$item['options']['img']) !!}" height="50" width="50"></a></td>
                       <td  class="name"><a href="#">{!! $item["name"] !!}</a></td>
-                      <td class="quantity"><input class="col-lg-1 qty" type="text" size="1" value="{!! $item['qty'] !!}" name="quantity[40]">
-                       
+                      <td class="quantity" style="text-align: center;">{{-- <input class="col-lg-1 qty" type="text" size="1" value="{!! $item['qty'] !!}" name="quantity[40]"> --}}{!! $item['qty'] !!}
+
                        </td>
-                       <td class="total"> 
+                       {{-- <td class="total">
                           <a href="#" class="updatecart" id="{!! $item['rowId'] !!}">
                               <img class="tooltip-test" data-original-title="Update" src="{!! asset('public/user/img/update.png')!!}" alt="">
                           </a>
                           <a href="{!! url('xoa-san-pham', $item['rowId']) !!}">
                               <img class="tooltip-test" data-original-title="Remove"  src="{!! asset('public/user/img/remove.png')!!}" alt="">
                           </a>
-                      </td>
-                     
-                       
+                      </td> --}}
+
+
                       <td class="price">{!! number_format($item["price"],0,",",".") !!}</td>
                       <td class="total">{!! number_format($item["price"]*$item["qty"],0,",",".") !!}</td>
-                       
+
                     </tr>
                     @endforeach
                 </form>
               </table>
             </div>
             <div class="row">
-              
+
                 <div class="col-lg-4 pull-right">
                   <table class="table table-striped table-bordered ">
                     <tbody>
@@ -77,9 +77,9 @@
                       </tr>
                     </tbody>
                   </table>
-                <a href="{{ url('/') }}" type="submit" class="btn btn-orange pull-right mr10">Continue Shopping</a>
+                <a href="{{ url('/') }}" type="submit" class="btn btn-orange pull-right mr10">Tiếp tục mua hàng</a>
                 </div>
-              
+
             </div>
           </div>
           <div class="checkoutsteptitle">Step 2: Delivery Details<a class="modify">Modify</a>
@@ -91,19 +91,19 @@
                 <fieldset>
                   <div class="col-lg-6">
                     <div class="control-group">
-                      <label class="control-label" >Name<span class="red">*</span></label>
+                      <label class="control-label" >Tên<span class="red">*</span></label>
                       <div class="controls">
                         <input type="text" value="" name="txtName" required>
                       </div>
                     </div>
                     <div class="control-group" style="margin: 15px 0">
-                      <label class="control-label">Gender<span class="red">*</span></label>
+                      <label class="control-label">Giới tính<span class="red">*</span></label>
                       <div class="controls">
                         <label class="radio-inline">
-                            <input name="rdoGender" value="0" checked="" type="radio">Female
+                            <input name="rdoGender" value="0" checked="" type="radio">Nữ
                         </label>
                         <label class="radio-inline">
-                            <input name="rdoGender" value="1" type="radio">Male
+                            <input name="rdoGender" value="1" type="radio">Nam
                         </label>
                       </div>
                     </div>
@@ -114,13 +114,13 @@
                       </div>
                     </div>
                     <div class="control-group">
-                      <label class="control-label" >Address<span class="red">*</span></label>
+                      <label class="control-label" >Địa chỉ<span class="red">*</span></label>
                       <div class="controls">
                         <input type="text" value="" name="txtAddress" required>
                       </div>
                     </div>
                     <div class="control-group">
-                      <label class="control-label" >Telephone<span class="red">*</span></label>
+                      <label class="control-label" >SĐT<span class="red">*</span></label>
                       <div class="controls">
                         <input type="text" value="" name="txtPhone" required>
                       </div>
@@ -128,12 +128,12 @@
                   </div>
                   <div class="col-lg-6">
                     <div class="control-group">
-                      <label class="control-label" >Note</label>
+                      <label class="control-label" >Ghi chú (nếu có)</label>
                       <div class="controls">
                         <textarea name="txtNote" id="" cols="30" rows="10"></textarea>
                       </div>
                     </div>
-                    <div class="control-group" style="margin: 15px 0">
+                    {{-- <div class="control-group" style="margin: 15px 0">
                       <label class="control-label">Payment<span class="red">*</span></label>
                       <div class="controls">
                         <label class="radio-inline">
@@ -143,16 +143,16 @@
                             <input name="rdoGender" value="1" type="radio">Money
                         </label>
                       </div>
-                    </div>
+                    </div> --}}
                   </div>
                 </fieldset>
-                <button type="submit" class="btn btn-orange pull-right">Continue</button>
+                <button type="submit" class="btn btn-orange pull-right">Đặt hàng</button>
               </form>
             </div>
-            
+
           </div>
-         
-        </div>        
+
+        </div>
         <!-- Sidebar Start-->
         <div class="col-lg-3">
           <aside>
