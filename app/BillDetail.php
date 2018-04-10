@@ -10,10 +10,10 @@ class BillDetail extends Model
     protected $fillable = ['id', 'product_id', 'bill_id', 'quantity', 'unit_price'];
 
     public function product() {
-    	return $this->belongTo('App\Product');
+    	return $this->belongsTo('App\Product');
     }
 
     public function bill() {
-    	return $this->belongTo('App\Bill');
+    	return $this->belongsTo('App\Bill');
     }
 }

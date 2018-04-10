@@ -69,7 +69,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="http://localhost/framework/laravel/Laravel_Project/logout"
+                        <li><a href="{{ URL('/') . '/logout' }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                             <form id="logout-form" action="http://localhost/framework/laravel/Laravel_Project/logout" method="POST" style="display: none;">
@@ -140,10 +140,7 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> Quản Lý Khách Hàng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Danh Sách Khách Hàng</a>
-                                </li>
-                                <li>
-                                    <a href="#">Thêm Khách Hàng</a>
+                                    <a href="{!! URL::route('admin.customer.list') !!}">Danh Sách Khách Hàng</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -164,7 +161,7 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> Quản Lý Đặt Hàng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Đơn Đặt Hàng</a>
+                                    <a href="{!! URL::route('admin.bill.list') !!}">Đơn Đặt Hàng</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -224,7 +221,7 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script src="{{ url('public/admin/js/myscript.js') }}"></script>
-    
+
 </body>
 
 </html>

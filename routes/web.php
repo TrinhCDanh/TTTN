@@ -86,6 +86,7 @@ Route::get('gioi-thieu', ['as'=>'gioithieu', function() {
 
 Route::post('mua-hang', ['as'=>'muahang', 'uses'=>'BillController@saveBill']);
 
+
 // Route::get('test-cart', function() {
 // 	if(Session('cart')) {
 // 		echo "Hello";
