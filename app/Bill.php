@@ -14,6 +14,10 @@ class Bill extends Model
     }
 
     public function customer() {
-    	return $this->belongsTo('App\Customer'); // this is my comment
+    	return $this->belongsTo('App\Customer','customer_id','id'); // this is my comment
+    }
+
+    public function DeliveryNotes() {
+        return $this->hasMany('App\DeliveryNote','bill_id','id');
     }
 }
