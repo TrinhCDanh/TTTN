@@ -38,31 +38,31 @@ class ShowController extends Controller
         });
     }
 
-    public function muahang($id) {
-        $product_buy = DB::table('products')->where('id', $id)->first();
-        Cart::add(['id'=>$id, 'name'=>$product_buy->name, 'qty'=>1, 'price'=>$product_buy->price, 'options'=> ['img'=>$product_buy->image]]);
-        return redirect()->route('giohang');
-    }
+    // public function muahang($id) {
+    //     $product_buy = DB::table('products')->where('id', $id)->first();
+    //     Cart::add(['id'=>$id, 'name'=>$product_buy->name, 'qty'=>1, 'price'=>$product_buy->price, 'options'=> ['img'=>$product_buy->image]]);
+    //     return redirect()->route('giohang');
+    // }
 
-    public function giohang() {
-        $content = Cart::content()->toArray();
-        $total = Cart::total();
-        return view('user.pages.shopping', compact('content', 'total'));
-    }
+    // public function giohang() {
+    //     $content = Cart::content()->toArray();
+    //     $total = Cart::total();
+    //     return view('user.pages.shopping', compact('content', 'total'));
+    // }
 
-    public function xoasanpham($id) {
-        Cart::remove($id);
-        return redirect()->route('giohang');
-    }
+    // public function xoasanpham($id) {
+    //     Cart::remove($id);
+    //     return redirect()->route('giohang');
+    // }
 
-    public function capnhat() {
-        if (Request::ajax()) {
-            $id = Request::get('id');
-            $qty = Request::get('qty');
-            Cart::update($id, $qty);
-            echo "oke";
-        }
-    }
+    // public function capnhat() {
+    //     if (Request::ajax()) {
+    //         $id = Request::get('id');
+    //         $qty = Request::get('qty');
+    //         Cart::update($id, $qty);
+    //         echo "oke";
+    //     }
+    // }
 
     public function timkiem(Request $request) {
         $key = Request::input('txtSearch');
@@ -74,10 +74,10 @@ class ShowController extends Controller
         return view('user.pages.search', compact('product_cate', 'lasted_product', 'menu_cate', 'name_cate'));
     }
 
-    public function checkout() {
-        $content = Cart::content()->toArray();
-        $total = Cart::total();
-        $tax = Cart::tax();
-        return view('user.pages.checkout', compact('content', 'total', 'tax'));
-    }
+    // public function checkout() {
+    //     $content = Cart::content()->toArray();
+    //     $total = Cart::total();
+    //     $tax = Cart::tax();
+    //     return view('user.pages.checkout', compact('content', 'total', 'tax'));
+    // }
 }

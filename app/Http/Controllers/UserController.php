@@ -11,7 +11,7 @@ use Auth;
 class UserController extends Controller
 {
     public function getList() {
-    	$user = User::select('id', 'username', 'level')->orderBy('id', 'DESC')->get()->toArray();
+    	$user = User::select('id', 'username', 'level', 'email')->orderBy('id', 'DESC')->get()->toArray();
     	return view('admin.user.list', compact('user'));
     }
 
@@ -33,8 +33,11 @@ class UserController extends Controller
     public function getDelete($id) {
     	$user_current_login = Auth::user()->id;
     	$user = User::find($id);
-    	if (($id == 2) || ($user_current_login != 2 && $user["level"] == 1))
-    		return redirect()->route('admin.user.list')->with(['level_message'=>'danger' ,'flash_message'=>'You cant not delete']);
+        if($id==$user_current_login)
+            return redirect()->route('admin.user.list')->with(['level_message'=>'danger' ,'flash_message'=>'You can\'t not delete yourself']);
+
+    	// if (($id == 2) || ($user_current_login != 2 && $user["level"] == 1))
+    	// 	return redirect()->route('admin.user.list')->with(['level_message'=>'danger' ,'flash_message'=>'You cant not delete']);
     	else {
     		$user->delete();
     		return redirect()->route('admin.user.list')->with(['level_message'=>'success' ,'flash_message'=>'Success Delete User']);
@@ -43,8 +46,9 @@ class UserController extends Controller
 
     public function getEdit($id) {
     	$data = User::find($id);
-    	if (Auth::user()->id != 2 && ($id == 2 || ($data["level"] == 1 && (Auth::user()->id != $id))))
-    		return redirect()->route('admin.user.list')->with(['level_message'=>'danger' ,'flash_message'=>'You cant not edit']);
+        $user_current_login = Auth::user()->id;
+    	if($id==$user_current_login)
+            return redirect()->route('admin.user.list')->with(['level_message'=>'danger' ,'flash_message'=>'You can\'t not edit yourself']);
     	return view('admin.user.edit', compact('data', 'id'));
     }
 

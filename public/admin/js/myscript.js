@@ -22,7 +22,7 @@ $(document).ready(function() {
 //AJAX
 $(document).ready(function() {
 	$("a#del-img_demo").on('click', function() {
-		var url = "http://localhost/framework/laravel/Laravel_Project/admin/product/delimg/";
+		var url = "http://" + window.location.hostname + "/admin/product/delimg/";
 		var _token = $("form[name='frmEditProduct']").find("input[name='_token']").val();
 		var idHinh = $(this).parent().find("img").attr("idHinh");
 		var img = $(this).parent().find("img").attr("src");
