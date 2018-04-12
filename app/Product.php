@@ -12,11 +12,11 @@ class Product extends Model
     //public $timestamps = false;
 
     public function cate() {
-    	return $this->belongTo('App\Cate');
+    	return $this->belongsTo('App\Cate');
     }
 
     public function user() {
-    	return $this->belongTo('App\User');
+    	return $this->belongsTo('App\User');
     }
 
     public function pimages() {
@@ -25,5 +25,9 @@ class Product extends Model
 
     public function bill_detail() {
     	return $this->hasMany('App\BillDetail');
+    }
+
+    public function DeliveryNoteDetails() {
+        return $this->hasMany('App\DeliveryNoteDetail','product_id','id');
     }
 }

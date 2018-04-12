@@ -48,10 +48,37 @@ Route::group(['middleware' => 'web'], function() {
 			Route::get('edit/{id}', ['as'=>'admin.user.getEdit', 'uses'=>'UserController@getEdit']);
 			Route::post('edit/{id}', ['as'=>'admin.user.postEdit', 'uses'=>'UserController@postEdit']);
 		});
+
+        Route::group(['prefix'=>'manufacturer'], function() {
+            Route::get('list', ['as'=>'admin.manufacturer.list', 'uses'=>'ManufacturerController@getList']);
+            Route::get('add', ['as'=>'admin.manufacturer.getAdd', 'uses'=>'ManufacturerController@getAdd']);
+            Route::post('add', ['as'=>'admin.manufacturer.postAdd', 'uses'=>'ManufacturerController@postAdd']);
+            Route::get('delete/{id}', ['as'=>'admin.manufacturer.getDelete', 'uses'=>'ManufacturerController@getDelete']);
+            Route::get('edit/{id}', ['as'=>'admin.manufacturer.getEdit', 'uses'=>'ManufacturerController@getEdit']);
+            Route::post('edit/{id}', ['as'=>'admin.manufacturer.postEdit', 'uses'=>'ManufacturerController@postEdit']);
+        });
+
+
 		Route::group(['prefix'=>'bill'], function() {
 			Route::get('list', ['as'=>'admin.bill.list', 'uses'=>'BillController@getList']);
 			Route::get('view/{id}', ['as'=>'admin.bill.getView', 'uses'=>'BillController@getView']);
 			Route::get('check-order/{id}', ['as'=>'admin.bill.checkorder', 'uses'=>'BillController@checkOrder']);
+
+                Route::get('listbill', ['as'=>'admin.bill.listbill', 'uses'=>'DeliveryNoteController@getListBill']);
+
+            Route::group(['prefix'=>'delivery-note'], function() {
+                Route::get('list/{idBill}', ['as'=>'admin.bill.delivery-note.list', 'uses'=>'DeliveryNoteController@getList']);
+                Route::get('add/{idBill}', ['as'=>'admin.bill.delivery-note.getAdd', 'uses'=>'DeliveryNoteController@getAdd']);
+                Route::post('add', ['as'=>'admin.bill.delivery-note.postAdd', 'uses'=>'DeliveryNoteController@postAdd']);
+
+                Route::get('detail/{idDeliveryNote}', ['as'=>'admin.bill.delivery-note.getDetail', 'uses'=>'DeliveryNoteController@getDetail']);
+
+                Route::get('delete/{id}', ['as'=>'admin.bill.delivery-note.getDelete', 'uses'=>'DeliveryNoteController@getDelete']);
+                Route::get('edit/{id}', ['as'=>'admin.bill.delivery-note.getEdit', 'uses'=>'DeliveryNoteController@getEdit']);
+                Route::post('edit/{id}', ['as'=>'admin.bill.delivery-note.postEdit', 'uses'=>'DeliveryNoteController@postEdit']);
+
+
+            });
 		});
 		Route::group(['prefix'=>'customer'], function() {
 			Route::get('list', ['as'=>'admin.customer.list', 'uses'=>'CustomerController@getList']);

@@ -22,7 +22,7 @@ class CreateDeliveryNoteDetailsTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
             $table->integer('delivery_notes_id')->unsigned();
-            $table->foreign('delivery_notes_id')->references('id')->on('bills')->onDelete('cascade');
+            $table->foreign('delivery_notes_id')->references('id')->on('delivery_notes')->onDelete('cascade');
 
             $table->timestamps();
         });
