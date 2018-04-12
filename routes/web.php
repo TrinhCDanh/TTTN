@@ -67,12 +67,11 @@ Route::group(['middleware' => 'web'], function() {
 			Route::get('view/{id}', ['as'=>'admin.bill.getView', 'uses'=>'BillController@getView']);
 			Route::get('check-order/{id}', ['as'=>'admin.bill.checkorder', 'uses'=>'BillController@checkOrder']);
 
-                Route::get('listbill', ['as'=>'admin.bill.listbill', 'uses'=>'DeliveryNoteController@getListBill']);
-
             Route::group(['prefix'=>'delivery-note'], function() {
+
                 Route::get('list/{idBill}', ['as'=>'admin.bill.delivery-note.list', 'uses'=>'DeliveryNoteController@getList']);
                 Route::get('add/{idBill}', ['as'=>'admin.bill.delivery-note.getAdd', 'uses'=>'DeliveryNoteController@getAdd']);
-                Route::post('add', ['as'=>'admin.bill.delivery-note.postAdd', 'uses'=>'DeliveryNoteController@postAdd']);
+                Route::post('add/{idBill}', ['as'=>'admin.bill.delivery-note.postAdd', 'uses'=>'DeliveryNoteController@postAdd']);
 
                 Route::get('detail/{idDeliveryNote}', ['as'=>'admin.bill.delivery-note.getDetail', 'uses'=>'DeliveryNoteController@getDetail']);
 

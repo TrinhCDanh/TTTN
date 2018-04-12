@@ -19,7 +19,7 @@
 
             </div>
             <div class="col-md-4">
-                <h3><a href="{{URL::route('admin.bill.listbill')}}"> <<< Trở lại danh sách đơn hàng </a></h3>
+                <h3><a href="{{URL::route('admin.bill.list')}}"> <<< Trở lại danh sách đơn hàng </a></h3>
             </div>
         </div>
         <hr/>

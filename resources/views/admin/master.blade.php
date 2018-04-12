@@ -166,15 +166,15 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Quản lí phiếu giao hàng (tạm thời)<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{URL::route('admin.bill.listbill')}}">Danh sách đơn đặt hàng</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                        {{--<li>--}}
+                            {{--<a href="#"><i class="fa fa-users fa-fw"></i> Quản lí phiếu giao hàng (tạm thời)<span class="fa arrow"></span></a>--}}
+                            {{--<ul class="nav nav-second-level">--}}
+                                {{--<li>--}}
+                                    {{--<a href="{{URL::route('admin.bill.listbill')}}">Danh sách đơn đặt hàng</a>--}}
+                                {{--</li>--}}
+                            {{--</ul>--}}
+                            {{--<!-- /.nav-second-level -->--}}
+                        {{--</li>--}}
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

@@ -25,7 +25,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12 ">
         @include('admin.blocks.error')
         <div class="panel-body">
-            <form action="{{route('admin.bill.delivery-note.postAdd')}}" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
 
                 <div class="table-responsive">
@@ -35,6 +35,7 @@
                             <td>ID</td>
                             <td>Tên sản phẩm</td>
                             <td>Giá</td>
+                            <td>số lượng</td>
                             {{--<td>Xóa</td>--}}
                         </tr>
                         </thead>
@@ -44,6 +45,7 @@
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->name }}</td>
                                 <td>{{$item->price}}</td>
+                                <td>{{$item->quantity}}</td>
                                 {{--<td><a onclick="return confirmDelete('Bạn có chắc muốn xóa không?');"href="{{route('admin.manufacturer.getDelete',$item->id)}}">Xóa</a></td>--}}
                             </tr>
                         @endforeach

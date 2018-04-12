@@ -9,8 +9,12 @@
 namespace App\Http\Controllers;
 
 use App\Bill;
+use App\BillDetail;
 use App\DeliveryNote;
+use App\DeliveryNoteDetail;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
@@ -31,22 +35,60 @@ class DeliveryNoteController extends Controller
     public function getAdd($idBill){
         $bill = Bill::find($idBill);
         $products = DB::select("		
-            SELECT p.*, bd.quantity as totalquantity, dnd.quantity, (bd.quantity - dnd.quantity) as shortage
-            FROM bills b
-            LEFT JOIN bill_details bd ON b.id = bd.bill_id
-            LEFT JOIN products p ON bd.product_id = p.id
-            LEFT JOIN delivery_note_details dnd ON p.id = dnd.product_id
-            WHERE b.id = ? ", [$idBill]);
+            select p.name, sum(dnd.quantity) as quantity,p.price, b.id, p.id as productId
+            from products p 
+            LEFT JOIN delivery_note_details dnd on p.id = dnd.product_id
+            LEFT JOIN delivery_notes dn on dn.id = dnd.delivery_notes_id
+            LEFT JOIN bills b on b.id = dn.bill_id
+            where b.id = ?
+            group by dnd.product_id,p.name,b.id
+           ", [$idBill]);
         return view('admin.deliveryNote.add',compact('bill','products'));
+    }
+
+    public function postAdd(Request $request, $id){
+
+        $deliveryNote = new DeliveryNote();
+        $deliveryNote->recipient_address = $request->recipient_address;
+        $deliveryNote->phone_number = $request->phone_number;
+        $deliveryNote->recipient_name = $request->recipient_name;
+        $deliveryNote->note = $request->note;
+        $deliveryNote->created_by = Auth::id();
+        $deliveryNote->bill_id = $id;
+        $deliveryNote->save();
+
+        $total = count($request->quantity);
+        $arrQuantity = $request->quantity;
+        $arrId = $request->productId;
+        for($i = 0; $i < $total; $i++)
+        {
+            if(!empty($arrQuantity[$i])){
+                $deliveryNoteDetail = new DeliveryNoteDetail();
+                $deliveryNoteDetail->quantity = $arrQuantity[$i];
+                $deliveryNoteDetail->product_id = $arrId[$i];
+                $deliveryNoteDetail->unit = 1;
+                $deliveryNoteDetail->delivery_notes_id = $deliveryNote->id;
+                $deliveryNoteDetail->save();
+            }
+        }
+        return redirect()->back()->with(['flash_message' => 'Thêm thành công']);
     }
 
     public function getDetail($idDeliveryNote){
         $products = DB::select("		
-            select p.name,p.price , dn.recipient_address, dn.recipient_name , dn.id,dn.phone_number
+            select p.name,p.price , dn.recipient_address, dn.recipient_name , dn.id,dn.phone_number, dnd.quantity
             from delivery_notes dn
             left join delivery_note_details dnd on dn.id = dnd.delivery_notes_id
             left join products p on p.id = dnd.product_id
             where dn.id = ? ", [$idDeliveryNote]);
         return view('admin.deliveryNote.detail',compact('products'));
+    }
+
+    public static function getNumofProductOrdered($productId,$billId){
+//        echo $productId;
+//        echo $billId;
+        $billDetail = BillDetail::where('product_id',$productId)->where('bill_id',$billId)->first();
+//        dd($billDetail);
+        return $billDetail->quantity;
     }
 }

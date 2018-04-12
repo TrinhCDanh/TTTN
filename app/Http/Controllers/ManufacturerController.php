@@ -15,11 +15,6 @@ use App\Manufacturer;
 
 class ManufacturerController extends Controller
 {
-    public function getListBill()
-    {
-        $bills = Bill::all();
-        return view('admin.manufacturer.listbill',compact('bills'));
-    }
     public function getList()
     {
         $manufacturers = Manufacturer::orderBy('id', 'DESC')->get();
