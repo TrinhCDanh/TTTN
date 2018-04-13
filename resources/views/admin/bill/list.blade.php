@@ -12,6 +12,7 @@
             <th>Total</th>
             <th>Delete</th>
             <th>View</th>
+            <th>Phiếu giao hàng</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@
             <td>{!! $item["total"] !!}</td>
             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('are you sure')" href="#"> Delete</a></td>
             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.bill.getView', $item['id']) !!}">View</a></td>
+            <td><a href="{{route('admin.bill.delivery-note.list',$item['id'])}}">Phiếu giao hàng</a>
         </tr>
         <?php $i++; ?>
         @endforeach

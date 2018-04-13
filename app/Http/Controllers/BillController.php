@@ -39,7 +39,6 @@ class BillController extends Controller
                 $billDetail->unit_price = $value['subtotal'];//
                 $billDetail->save();
             }
-
             Session::forget('cart');
             return redirect()->back()->with(['level_message'=>'success' ,'flash_message'=>'Success']);
         }

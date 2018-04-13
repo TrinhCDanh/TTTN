@@ -149,10 +149,10 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> Quản Lý Nhà Sản Xuất<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Danh Sách NSX</a>
+                                    <a href="{!! URL::route('admin.manufacturer.list') !!}">Danh Sách NSX</a>
                                 </li>
                                 <li>
-                                    <a href="#">Thêm NSX</a>
+                                    <a href="{!! URL::route('admin.manufacturer.getAdd') !!}">Thêm NSX</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -166,6 +166,15 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        {{--<li>--}}
+                            {{--<a href="#"><i class="fa fa-users fa-fw"></i> Quản lí phiếu giao hàng (tạm thời)<span class="fa arrow"></span></a>--}}
+                            {{--<ul class="nav nav-second-level">--}}
+                                {{--<li>--}}
+                                    {{--<a href="{{URL::route('admin.bill.listbill')}}">Danh sách đơn đặt hàng</a>--}}
+                                {{--</li>--}}
+                            {{--</ul>--}}
+                            {{--<!-- /.nav-second-level -->--}}
+                        {{--</li>--}}
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
