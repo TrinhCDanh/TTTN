@@ -3,7 +3,7 @@
 @section('content')
 <section id="featured" class="row mt40">
   <div class="container">
-    <h1 class="heading1"><span class="maintext">Latest Products</span><span class="subtext"> See Our  Latest Products</span></h1>
+    <h1 class="heading1"><span class="maintext">Sản phẩm mới nhất</span><span class="subtext"> Xem sản phẩm mới nhất của chúng tôi</span></h1>
     <ul class="thumbnails">
       @foreach($product as $item)
       <li class="col-lg-3  col-sm-6">
@@ -12,7 +12,7 @@
           <span class="sale tooltip-test">Sale</span>
           <a href="{{ URL('chi-tiet-san-pham', [$item->id, $item->alias]) }}"><img alt="" src="{!! asset('resources/uploads/'.$item->image) !!}"></a>
           <div class="shortlinks">
-            <a class="details" href="#">DETAILS</a>
+            <a class="details" href="{{ URL('chi-tiet-san-pham', [$item->id, $item->alias]) }}">DETAILS</a>
             <a class="wishlist" href="#">WISHLIST</a>
             <a class="compare" href="#">COMPARE</a>
           </div>
@@ -31,7 +31,7 @@
 </section>
   
 <!-- Latest Product-->
-<section id="latest" class="row">
+<!-- <section id="latest" class="row">
   <div class="container">
     <h1 class="heading1"><span class="maintext">Random Products</span><span class="subtext"> See Our Random Products</span></h1>
     <ul class="thumbnails">
@@ -58,5 +58,5 @@
       @endforeach
     </ul>
   </div>
-</section>
+</section> -->
 @endsection()

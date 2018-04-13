@@ -89,7 +89,7 @@ class ProductController extends Controller
     	$product->content 		= Request::input('txtContent');
     	$product->keywords 		= Request::input('txtKeywords');
     	$product->description 	= Request::input('txtDescription');
-    	$product->user_id 		= 1;
+    	//$product->user_id 		= 1;
     	$product->cate_id 		= Request::input('sltParent');
     	//Cap nhat file hinh
     	$img_current = "resources/uploads/".$product->image;
