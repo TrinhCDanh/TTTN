@@ -14,11 +14,11 @@ class DeliveryNote extends Model
     }
 
     public function user() {
-        return $this->belongsTo('App\User'); // this is my comment
+        return $this->belongsTo('App\User','customer_id','id'); // this is my comment
     }
 
     public function DeliveryNoteDetails() {
-        return $this->hasMany('App\DeliveryNoteDetail','customer_id','id'); // this is my comment
+        return $this->hasMany('App\DeliveryNoteDetail','delivery_notes_id','id'); // this is my comment
     }
 
 }

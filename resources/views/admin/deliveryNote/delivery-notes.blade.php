@@ -45,7 +45,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($deliveryNotes as $item)
+                                @foreach($bill->DeliveryNotes as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
                                         <td>{{$item->recipient_name}}</td>

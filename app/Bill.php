@@ -10,7 +10,7 @@ class Bill extends Model
     protected $fillable = ['id', 'date_order', 'total', 'note', 'check_order', 'customer_id'];
 
     public function bill() {
-    	return $this->hasMany('App\BillDetail');
+    	return $this->hasMany('App\BillDetail','bill_id','id');
     }
 
     public function customer() {

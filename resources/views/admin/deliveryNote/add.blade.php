@@ -20,21 +20,24 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Địa chỉ người nhận</label>
-                                <input class="form-control" name="recipient_address" required value="{!! old('recipient_address') !!}" />
+                                <input class="form-control" name="recipient_address" required
+                                       value="{!! old('recipient_address') !!}"/>
                             </div>
                             <div class="form-group">
                                 <label>Số điện thoại</label>
-                                <input class="form-control" name="phone_number" required value="{!! old('phone_number') !!}"/>
+                                <input class="form-control" name="phone_number" required
+                                       value="{!! old('phone_number') !!}"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Tên người nhận</label>
-                                <input class="form-control" name="recipient_name" required  value="{!! old('recipient_name') !!}"/>
+                                <input class="form-control" name="recipient_name" required
+                                       value="{!! old('recipient_name') !!}"/>
                             </div>
                             <div class="form-group">
                                 <label>Ghi chú</label>
-                                <input class="form-control" name="note"  value="{!! old('note') !!}"/>
+                                <input class="form-control" name="note" value="{!! old('note') !!}"/>
                             </div>
                         </div>
                     </div>
@@ -53,27 +56,29 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($products as $item)
-                                @php $quantityOrder = \App\Http\Controllers\DeliveryNoteController::getNumofProductOrdered($item->productId,$bill->id); @endphp
+                            @foreach($bill->bill as $item)
+                                @php $quantityDagiao = \App\Http\Controllers\DeliveryNoteController::getNumofProductDaGiao($item->product->id,$bill->id); @endphp
                                 <tr>
-                                    <td><a href="{{route('admin.bill.delivery-note.list',$item->id)}}">{{$item->id}}</a>
+                                    <td>
+                                        <a href="{{route('admin.bill.delivery-note.list',$item->id)}}">{{$item->product->id}}</a>
                                     </td>
                                     <td>
-                                        <a href="{{route('admin.bill.delivery-note.list',$item->name)}}">{{$item->name }}</a>
+                                        <a href="{{route('admin.bill.delivery-note.list',$item->name)}}">{{$item->product->name }}</a>
                                     </td>
-                                    <td>{{$item->price}}</td>
-                                    <td>{{ $quantityOrder }}</td>
-                                    <td>{{$item->quantity or 0}}</td>
-                                    <td>{{ $quantityOrder - $item->quantity}}</td>
+                                    <td>{{$item->product->price}}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <td>{{$quantityDagiao or 0 }}</td>
+                                    <td>{{ $item->quantity - $quantityDagiao}}</td>
                                     <td>
-                                        @if($quantityOrder - $item->quantity > 0)
-                                        <input min="0" max="{{ $quantityOrder - $item->quantity }}" type="number"
-                                               name="quantity[]">
-                                            <input type="hidden" name="productId[]" value="{{$item->productId}}">
+                                        @if($item->quantity - $quantityDagiao > 0)
+                                            <input min="0" max="{{ $item->quantity - $quantityDagiao }}" type="number"
+                                                   name="quantity[]">
+                                            <input type="hidden" name="productId[]" value="{{$item->product->id}}">
                                         @endif
                                     </td>
                                 </tr>
                             @endforeach
+
                             </tbody>
                         </table>
                     </div>

@@ -27,9 +27,9 @@ class DeliveryNoteController extends Controller
     }
 
     public function getList($idBill){
-        $deliveryNotes = DeliveryNote::where('bill_id',$idBill)->get();
+//        $deliveryNotes = DeliveryNote::where('bill_id',$idBill)->get();
         $bill = Bill::find($idBill);
-        return view('admin.deliveryNote.delivery-notes',compact('deliveryNotes','bill'));
+        return view('admin.deliveryNote.delivery-notes',compact('bill'));
     }
 
     public function getAdd($idBill){
@@ -43,6 +43,7 @@ class DeliveryNoteController extends Controller
             where b.id = ?
             group by dnd.product_id,p.name,b.id
            ", [$idBill]);
+
         return view('admin.deliveryNote.add',compact('bill','products'));
     }
 
@@ -75,20 +76,31 @@ class DeliveryNoteController extends Controller
     }
 
     public function getDetail($idDeliveryNote){
-        $products = DB::select("		
-            select p.name,p.price , dn.recipient_address, dn.recipient_name , dn.id,dn.phone_number, dnd.quantity
-            from delivery_notes dn
-            left join delivery_note_details dnd on dn.id = dnd.delivery_notes_id
-            left join products p on p.id = dnd.product_id
-            where dn.id = ? ", [$idDeliveryNote]);
-        return view('admin.deliveryNote.detail',compact('products'));
+//        $products = DB::select("
+//            select p.name,p.price , dn.recipient_address, dn.recipient_name , dn.id,dn.phone_number, dnd.quantity
+//            from delivery_notes dn
+//            left join delivery_note_details dnd on dn.id = dnd.delivery_notes_id
+//            left join products p on p.id = dnd.product_id
+//            where dn.id = ? ", [$idDeliveryNote]);
+        $deliveryNote  = DeliveryNote::find($idDeliveryNote);
+//        dd($deliveryNote->DeliveryNoteDetails);
+        return view('admin.deliveryNote.detail',compact('deliveryNote'));
     }
 
-    public static function getNumofProductOrdered($productId,$billId){
-//        echo $productId;
-//        echo $billId;
-        $billDetail = BillDetail::where('product_id',$productId)->where('bill_id',$billId)->first();
-//        dd($billDetail);
-        return $billDetail->quantity;
+    public static function getNumofProductDaGiao($productId,$billId){
+//        $billDetail = DeliveryNoteDetail::where('product_id',$productId)->where('bill_id',$billId)->first();
+        $products = DB::select("		
+            select sum(dnd.quantity) as quantity
+            from bills b 
+            LEFT JOIN delivery_notes dn on b.id = dn.bill_id
+            LEFT JOIN delivery_note_details dnd on dn.id = dnd.delivery_notes_id
+            LEFT JOIN products p on p.id = dnd.product_id
+            where b.id = ? and p.id = ?
+            group by p.id
+           ", [$billId,$productId]);
+        if(empty($products)) {
+            return 0;
+        }
+        return $products[0]->quantity;
     }
 }
