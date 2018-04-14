@@ -6,15 +6,15 @@
     <!--  breadcrumb -->
       <ul class="breadcrumb">
         <li>
-          <a href="#">Home</a>
+          <a href="{{ URL('/') }}"">Trang chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">Checkout</li>
+        <li class="active">Đặt hàng</li>
       </ul>
       <div class="row">
         <!-- Account Login-->
         <div class="col-lg-9">
-          <h1 class="heading1"><span class="maintext">Checkout</span><span class="subtext"> Checkout Process Steps</span></h1>
+          <h1 class="heading1"><span class="maintext">Đặt hàng</span><span class="subtext">Vui lòng thực hiện các bước sau</span></h1>
           <div class="thong-bao">
             @if (Session::has('flash_message'))
                 <div class="alert alert-{!! Session::get('level_message') !!}">
@@ -22,18 +22,18 @@
                 </div>
             @endif
           </div>
-          <div class="checkoutsteptitle">Step 1: Confirm Order<a class="modify">Modify</a>
+          <div class="checkoutsteptitle">Bước 1: Xác nhận đơn hàng<a class="modify">Modify</a>
           </div>
           <div class="checkoutstep">
             <div class="cart-info">
               <table class="table table-striped table-bordered">
                 <tr>
-                  <th class="image">Image</th>
-                  <th class="name">Product Name</th>
-                  <th class="quantity">Quantity</th>
+                  <th class="image">Hình</th>
+                  <th class="name">Tên hàng hóa</th>
+                  <th class="quantity">Số lượng</th>
                   {{-- <th class="action">Action</th> --}}
-                  <th class="price">Unit Price</th>
-                  <th class="total">Total</th>
+                  <th class="price">Giá</th>
+                  <th class="total">Tổng</th>
                 </tr>
                 <form method="POST" action="">
                   <input type="hidden" name="_token" value="{!! csrf_token() !!}" >
@@ -72,7 +72,7 @@
                         <td><span class="bold">{{$tax}}</span></td>
                       </tr>
                       <tr>
-                        <td><span class="extra bold totalamout">Total :</span></td>
+                        <td><span class="extra bold totalamout">Tổng cộng :</span></td>
                         <td><span class="bold totalamout">{{$total}}</span></td>
                       </tr>
                     </tbody>
@@ -82,7 +82,7 @@
 
             </div>
           </div>
-          <div class="checkoutsteptitle">Step 2: Delivery Details<a class="modify">Modify</a>
+          <div class="checkoutsteptitle">Bước 2: Nhập thông tin<a class="modify">Modify</a>
           </div>
           <div class="checkoutstep">
             <div class="row">
@@ -140,7 +140,7 @@
                             <input name="rdoGender" value="0" checked="" type="radio">COD
                         </label>
                         <label class="radio-inline">
-                            <input name="rdoGender" value="1" type="radio">Money
+                            <input name="rdoGender" value="1" type="radio">Tiền mặt
                         </label>
                       </div>
                     </div> --}}
@@ -157,13 +157,13 @@
         <div class="col-lg-3">
           <aside>
             <div class="sidewidt">
-              <h2 class="heading2"><span> Checkout Steps</span></h2>
+              <h2 class="heading2"><span>Các bước đặt hàng</span></h2>
               <ul class="nav nav-list categories">
                 <li>
-                  <a href="#">Confirm Order</a>
+                  <a href="#">Xác nhận đơn hàng</a>
                 </li>
                 <li>
-                  <a href="#">Delivery Details</a>
+                  <a href="#">Nhập thông tin</a>
                 </li>
               </ul>
             </div>
