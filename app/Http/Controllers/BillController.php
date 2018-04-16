@@ -13,14 +13,26 @@ class BillController extends Controller
 {
     public function saveBill(Request $request) {
         if(Session('cart')) {
-            echo 'Ton tai gio hang';
+
             $customer = new Customer;
-            $customer->name = $request->txtName;
-            $customer->gender = $request->rdoGender;
-            $customer->email = $request->txtEmail;
-            $customer->address = $request->txtAddress; 
-            $customer->phone = $request->txtPhone;
-            $customer->save();
+            $kiemtra = Customer::where('email', $request->txtEmail)->count();
+            if ($kiemtra != 0 ) {
+                $customer = Customer::where('email', $request->txtEmail)->first();
+                $customer->name = $request->txtName;
+                $customer->gender = $request->rdoGender;
+                $customer->address = $request->txtAddress;
+                $customer->phone = $request->txtPhone;
+                $customer->save();
+            } else {
+                $customer = new Customer;
+                $customer->name = $request->txtName;
+                $customer->gender = $request->rdoGender;
+                $customer->email = $request->txtEmail;
+                $customer->address = $request->txtAddress;
+                $customer->phone = $request->txtPhone;
+                $customer->save();
+            }
+
 
             $bill = new Bill;
             $bill->date_order = date('Y-m-d');
@@ -42,7 +54,7 @@ class BillController extends Controller
             Session::forget('cart');
             return redirect()->back()->with(['level_message'=>'success' ,'flash_message'=>'Success']);
         }
-            
+
     }
 
     public function getList() {
