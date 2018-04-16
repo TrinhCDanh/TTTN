@@ -17,7 +17,7 @@
             <a class="compare" href="#">COMPARE</a>
           </div>
           <div class="pricetag">
-            <span class="spiral"></span><a href="{!! url('mua-hang', [$item->id, $item->alias]) !!}" class="productcart">ADD TO CART</a>
+            <span class="spiral"></span><a href="{!! url('mua-hang', [$item->id, $item->alias]) !!}" class="productcart">MUA HÀNG</a>
             <div class="price">
               <div class="pricenew">{{ number_format($item->price,0,",",".") }}</div>
               <div class="priceold">$00.00</div>
@@ -29,7 +29,7 @@
     </ul>
   </div>
 </section>
-  
+
 <!-- Latest Product-->
 <!-- <section id="latest" class="row">
   <div class="container">
