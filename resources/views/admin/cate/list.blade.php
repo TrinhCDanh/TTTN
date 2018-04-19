@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('controller', 'Category')
+@section('controller', 'Loại hàng hóa')
 @section('action', 'List')
 @section('content')
 <!-- /.col-lg-12 -->
@@ -7,10 +7,10 @@
     <thead>
         <tr align="center">
             <th>ID</th>
-            <th>Name</th>
+            <th>Tên loại</th>
             <th>Category Parent</th>
-            <th>Delete</th>
-            <th>Edit</th>
+            <th>Xóa</th>
+            <th>Sửa</th>
         </tr>
     </thead>
     <tbody>
@@ -25,8 +25,8 @@
                         echo "None";
                     else {
                        $parent = DB::table('cates')->where('id', $item["parent_id"])->first();
-                        echo $parent->name; 
-                    } 
+                        echo $parent->name;
+                    }
                 ?>
             </td>
             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('are you sure')" href="{!! URL::route('admin.cate.getDelete', $item['id']) !!}"> Delete</a></td>
@@ -38,4 +38,3 @@
 </table>
 
 @endsection()
-    

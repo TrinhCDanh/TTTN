@@ -1,6 +1,6 @@
 @extends('admin.master')
-@section('controller', 'Category')
-@section('action', 'Edit')
+@section('controller', 'Loại hàng hóa')
+@section('action', 'Cập nhật loại hàng hóa')
 @section('content')
 <!-- /.col-lg-12 -->
 <div class="col-lg-7" style="padding-bottom:120px">
@@ -15,19 +15,19 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Category Name</label>
+            <label>Tên loại hàng</label>
             <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" value="{!! old('txtCateName', isset($data) ? $data['name'] : null) !!}" />
         </div>
         <div class="form-group">
-            <label>Category Order</label>
+            <label>Order</label>
             <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" value="{!! old('txtOrder', isset($data) ? $data['order'] : null) !!}"/>
         </div>
         <div class="form-group">
-            <label>Category Keywords</label>
+            <label>Từ khóa</label>
             <input class="form-control" name="txtKeywords" placeholder="Please Enter Category Keywords" value="{!! old('txtKeywords', isset($data) ? $data['keywords'] : null) !!}"/>
         </div>
         <div class="form-group">
-            <label>Category Description</label>
+            <label>Mô tả</label>
             <textarea class="form-control" name="txtDescription" rows="3">{!! old('txtDescription', isset($data) ? $data['description'] : null) !!}</textarea>
         </div>
         <button type="submit" class="btn btn-default">Category Edit</button>
