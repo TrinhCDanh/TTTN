@@ -1,6 +1,6 @@
 @extends('admin.master')
-@section('controller', 'Category')
-@section('action', 'Add')
+@section('controller', 'Loại hàng hóa')
+@section('action', 'Thêm hàng hóa')
 @section('content')
 <!-- /.col-lg-12 -->
 <div class="col-lg-7" style="padding-bottom:120px">
@@ -15,19 +15,19 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Category Name</label>
+            <label>Tên loại hàng</label>
             <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
         </div>
         <div class="form-group">
-            <label>Category Order</label>
+            <label>Order</label>
             <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
         </div>
         <div class="form-group">
-            <label>Category Keywords</label>
+            <label>Từ khóa</label>
             <input class="form-control" name="txtKeywords" placeholder="Please Enter Category Keywords" />
         </div>
         <div class="form-group">
-            <label>Category Description</label>
+            <label>Mô tả</label>
             <textarea class="form-control" name="txtDescription" rows="3"></textarea>
         </div>
         <!--<div class="form-group">

@@ -1,16 +1,16 @@
 @extends('admin.master')
-@section('controller', 'Customer')
-@section('action', 'List')
+@section('controller', 'Quản lý thông tin khách hàng')
+@section('action', 'Danh sách')
 @section('content')
 <!-- /.col-lg-12 -->
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
     <thead>
         <tr align="center">
             <th>ID</th>
-            <th>Customer name</th>
-            <th>Customer email</th>
-            <th>Gender</th>
-            <th>View</th>
+            <th>Tên khách hàng</th>
+            <th>Email</th>
+            <th>Giới tính</th>
+            <th>Xem</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +20,7 @@
             <td>{!! $i !!}</td>
             <td>{!! $item["name"] !!}</td>
             <td>{!! $item["email"] !!}</td>
-            <td>{{ $item['gender']==0  ? 'Famale' : 'Male' }}</td>
+            <td>{{ $item['gender']==0  ? 'Nữ' : 'Nam' }}</td>
             <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.customer.getView', $item['id']) !!}">View</a></td>
         </tr>
         <?php $i++; ?>
