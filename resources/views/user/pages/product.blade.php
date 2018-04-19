@@ -2,7 +2,7 @@
 @section('description', 'Product Page')
 @section('content')
   <section id="product" style="margin-top: 20px">
-    <div class="container">      
+    <div class="container">
       <!-- Product Details-->
       <div class="row">
        <!-- Left Image-->
@@ -20,7 +20,7 @@
               </a>
             </li>
             @endforeach
-            
+
           </ul>
           <span>Mouse move on Image to zoom</span>
           <ul class="thumbnails mainimage">
@@ -36,7 +36,7 @@
               </a>
             </li>
             @endforeach
-            
+
           </ul>
         </div>
          <!-- Right Details-->
@@ -45,34 +45,43 @@
             <div class="col-lg-12">
               <h1 class="productname"><span class="bgnone">{!! $product_detail->name !!}</span></h1>
               <div class="productprice">
-                <div class="productpageprice">
-                  <span class="spiral"></span>{!! number_format($product_detail->price,0,",",".") !!}</div>
-                <ul class="rate">
+                <div class="productpageprice" style="font-size: 24px">
+                  <span class="spiral" ></span>{!! number_format($product_detail->price,0,",",".") !!} <span>VNĐ {!! $product_detail->unit !!}</span></div>
+                <!-- <ul class="rate">
                   <li class="on"></li>
                   <li class="on"></li>
                   <li class="on"></li>
                   <li class="off"></li>
                   <li class="off"></li>
-                </ul>
+                </ul> -->
               </div>
-            
+              <div class="productcontent">
+                <div class="productintro">
+                  <div class="well">
+                    <b>{!! $product_detail->intro !!}</b>
+                    <br>
+                    {!! $product_detail->content !!}
+                  </div>
+                </div>
+              </div>
+
               <ul class="productpagecart">
-                <li><a class="cart" href="{!! url('mua-hang', [$product_detail->id, $product_detail->alias]) !!}">Add to Cart</a>
+                <li><a class="cart" href="{!! url('mua-hang', [$product_detail->id, $product_detail->alias]) !!}">MUA HÀNG</a>
                 </li>
-                <li><a class="wish" href="#" >Add to Wishlist</a>
+                <li><a class="wish" href="#" >Yêu thích</a>
                 </li>
-                <li><a class="comare" href="#" >Add to Compare</a>
+                <li><a class="comare" href="#" >So sánh</a>
                 </li>
               </ul>
          <!-- Product Description tab & comments-->
          <div class="productdesc">
                 <ul class="nav nav-tabs" id="myTab">
-                  <li class="active"><a href="#description">Description</a>
+                  <li class="active"><a href="#description">Mô tả</a>
                   </li>
-                  <li><a href="#specification">Specification</a>
+                  <!-- <li><a href="#specification">Specification</a>
                   </li>
                   <li><a href="#review">Review</a>
-                  </li>
+                  </li> -->
                   <li><a href="#producttag">Tags</a>
                   </li>
                 </ul>
@@ -80,7 +89,7 @@
                   <div class="tab-pane active" id="description">
                     {!! $product_detail->description !!}<br>
                   </div>
-                  <div class="tab-pane " id="specification">
+                  <!-- <div class="tab-pane " id="specification">
                     <ul class="productinfo">
                       <li>
                         <span class="productinfoleft"> Product Code:</span> Product 16 </li>
@@ -99,8 +108,8 @@
                       <li>
                         <span class="productinfoleft"> Reward Points:</span> 60 </li>
                     </ul>
-                  </div>
-                  <div class="tab-pane" id="review">
+                  </div> -->
+                  <!-- <div class="tab-pane" id="review">
                     <h3>Write a Review</h3>
                     <form class="form-vertical">
                       <fieldset>
@@ -119,35 +128,13 @@
                       </fieldset>
                       <input type="submit" class="btn btn-orange" value="continue">
                     </form>
-                  </div>
+                  </div> -->
                   <div class="tab-pane" id="producttag">
-                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum <br>
+                    <p> Danh mục từ khóa <br>
                       <br>
                     </p>
                     <ul class="tags">
-                      <li><a href="#"><i class="icon-tag"></i> Webdesign</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> html</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> html</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> css</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> jquery</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> css</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> jquery</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> Webdesign</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> css</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> jquery</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> Webdesign</a>
-                      </li>
-                      <li><a href="#"><i class="icon-tag"></i> html</a>
+                      <li><a href="#"><i class="icon-tag"></i> {!! $product_detail->keywords !!}</a>
                       </li>
                     </ul>
                   </div>
@@ -162,7 +149,7 @@
   <!--  Related Products-->
   <section id="related" class="row">
     <div class="container">
-      <h1 class="heading1"><span class="maintext">Related Products</span><span class="subtext"> See Our Most featured Products</span></h1>
+      <h1 class="heading1"><span class="maintext">Hàng cùng loại</span><span class="subtext"> See Our Most featured Products</span></h1>
       <ul class="thumbnails">
         @foreach($product_cate as $item_pro_cate)
         <li class="col-lg-3 col-sm-3">
@@ -176,7 +163,7 @@
               <a class="compare" href="#">COMPARE</a>
             </div>
             <div class="pricetag">
-              <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
+              <span class="spiral"></span><a href="#" class="productcart">MUA HÀNG</a>
               <div class="price">
                 <div class="pricenew">{!! $item_pro_cate->price !!}</div>
                 <div class="priceold">$5000.00</div>

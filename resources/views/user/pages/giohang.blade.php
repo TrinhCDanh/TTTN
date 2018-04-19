@@ -6,22 +6,22 @@
      <!--  breadcrumb -->
       <ul class="breadcrumb">
         <li>
-          <a href="#">Home</a>
+          <a href="{{ URL('/') }}">Trang chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active"> Shopping Cart</li>
+        <li class="active">Giỏ hàng</li>
       </ul>
-      <h1 class="heading1"><span class="maintext"> Shopping Cart</span><span class="subtext"> All items in your  Shopping Cart</span></h1>
+      <h1 class="heading1"><span class="maintext"> Giỏ hàng</span><span class="subtext">Các mặt hàng bạn đã chọn</span></h1>
       <!-- Cart-->
       <div class="cart-info">
         <table class="table table-striped table-bordered">
           <tr>
-            <th class="image">Image</th>
-            <th class="name">Product Name</th>
-            <th class="quantity">Qty</th>
+            <th class="image">Hình</th>
+            <th class="name">Tên hàng hóa</th>
+            <th class="quantity">Số lượng</th>
             <th class="total">Action</th>
-            <th class="price">Unit Price</th>
-            <th class="total">Total</th>
+            <th class="price">Giá hàng hóa</th>
+            <th class="total">Tổng</th>
 
           </tr>
 
@@ -89,7 +89,7 @@
           <div class="col-lg-4 pull-right">
             <table class="table table-striped table-bordered ">
               <tr>
-                <td><span class="extra bold totalamout">Total :</span></td>
+                <td><span class="extra bold totalamout">Tổng cộng :</span></td>
                 <td><span class="bold totalamout">{!! $total !!}</span></td>
               </tr>
             </table>

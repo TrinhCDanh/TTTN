@@ -4,48 +4,48 @@
 
   <section id="product" style="margin-top: 20px">
     <div class="container">
-     <!--  breadcrumb -->  
+     <!--  breadcrumb -->
       <ul class="breadcrumb">
         <li>
-          <a href="#">Home</a>
+          <a href="{{ URL('/') }}">Trang chủ</a>
           <span class="divider">/</span>
         </li>
-        <li class="active">Category</li>
+        <li class="active">Loại hàng</li>
       </ul>
-      <div class="row">        
+      <div class="row">
         <!-- Sidebar Start-->
         <aside class="col-lg-3">
-         <!-- Category-->  
+         <!-- Category-->
           <div class="sidewidt">
-            <h2 class="heading2"><span>Categories</span></h2>
+            <h2 class="heading2"><span>Loại hàng</span></h2>
             <ul class="nav nav-list categories">
               @foreach($menu_cate as $item_menu)
                 <li>
                   <a href="{{ URL('loai-san-pham', [$item_menu->id, $item_menu->alias]) }}">{{$item_menu->name}}</a>
                 </li>
               @endforeach
-              
+
             </ul>
           </div>
-         
-          <!-- Latest Product -->  
+
+          <!-- Latest Product -->
           <div class="sidewidt">
-            <h2 class="heading2"><span>Latest Products</span></h2>
+            <h2 class="heading2"><span>Hàng mới</span></h2>
             <ul class="bestseller">
               @foreach($lasted_product as $item_lasted)
               <li>
                 <img width="50" height="50" src="{!! asset('resources/uploads/'.$item_lasted->image) !!}" alt="product" title="product">
                 <a class="productname" href="product.html">{!! $item_lasted->name !!}</a>
                 <span class="procategory">{{ $name_cate->name }}</span>
-                <span class="price">{!! $item_lasted->price !!}</span>
+                <span class="price">{!! number_format($item_lasted->price,0,",",".") !!}</span>
               </li>
               @endforeach
             </ul>
-          </div> 
+          </div>
         </aside>
         <!-- Sidebar End-->
         <!-- Category-->
-        <div class="col-lg-9">          
+        <div class="col-lg-9">
           <!-- Category Products-->
           <section id="category">
                <!-- Sorting-->
@@ -90,7 +90,7 @@
                           <a class="compare" href="#">COMPARE</a>
                         </div>
                         <div class="pricetag">
-                          <span class="spiral"></span><a href="{!! url('mua-hang', [$item->id, $item->alias]) !!}" class="productcart">ADD TO CART</a>
+                          <span class="spiral"></span><a href="{!! url('mua-hang', [$item->id, $item->alias]) !!}" class="productcart">MUA HÀNG</a>
                           <div class="price">
                             <div class="pricenew">{{ number_format($item->price,0,",",".") }}</div>
                             <div class="priceold">$00.00</div>
@@ -113,7 +113,7 @@
                             <a class="prdocutname" href="{{ URL('chi-tiet-san-pham', [$item->id, $item->alias]) }}">{!! $item->name !!}</a>
                           <div class="productdiscrption">{{ $item->description }}</div>
                             <div class="pricetag">
-                              <span class="spiral"></span><a href="{!! url('mua-hang', [$item->id, $item->alias]) !!}" class="productcart">ADD TO CART</a>
+                              <span class="spiral"></span><a href="{!! url('mua-hang', [$item->id, $item->alias]) !!}" class="productcart">MUA HÀNG</a>
                               <div class="price">
                                 <div class="pricenew">{{ number_format($item->price,0,",",".") }}</div>
                                 <div class="priceold">$00.00</div>
